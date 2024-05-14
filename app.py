@@ -311,7 +311,7 @@ def add_reply():
     classification_result = hybrid_classifier(models, comment_content)
     print(classification_result)
 
-    api_key = "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"
+    api_key = os.getenv('API_KEY')
 
     conversation_history = [{"role": "system", "content": "You are a helpful assistant."}]
 
