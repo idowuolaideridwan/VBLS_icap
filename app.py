@@ -281,7 +281,10 @@ def add_comment():
 
     # Perform Question and Answer Classification
     is_qa = str.lower(response)
-    qa_type = 1 if is_qa == "question" else 0
+    if classification_result == "question":
+        qa_type = 1
+    else:
+        qa_type = 1 if is_qa == "question" else 0
 
     connection = get_db_connection()
     if connection:
