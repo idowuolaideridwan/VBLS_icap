@@ -16,6 +16,8 @@ import nltk
 app = Flask(__name__)
 app.secret_key = b'\x00\xdc8\xfa\xb1\xd7\x06\x96\x02\xdb<F@7\xf0\xf3\xbf$\x8cb\x94w\xe8\xa3'
 
+nltk.download('punkt')  # Ensure required NLTK resources are downloaded
+
 # Path to the folder containing saved models
 models_folder_path = 'text_classification/algo/models/'
 
@@ -261,7 +263,7 @@ def add_comment():
     toxic_type = 0
 
     classification_result = hybrid_classifier(models, comment_content)
-    # print(classification_result)
+    print(classification_result)
 
     api_key = os.getenv('API_KEY')
 
@@ -275,7 +277,7 @@ def add_comment():
 
     response = get_chat_response(conversation_history, api_key)
 
-    # print(response)
+    print(response)
 
     # Perform Question and Answer Classification
     is_qa = str.lower(response)
